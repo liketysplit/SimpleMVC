@@ -22,21 +22,23 @@
         }else{
 
         }
-        // $data = [
-        //     'title' => 'Simple',
-        //     'description' => 'Post using a simple framework!'
-        // ];
-
-      
      
-        
     }
 
     public function login(){
-        $data = [
-            
-        ];
+        
+        if($_SERVER['REQUEST_METHOD'] != 'POST'){
+            $data = [
+                'email' => '',
+                'password1' => '',
+                'error_email' => '',
+                'error_password1' => '',
+            ];
 
-        $this->view('users/login', $data);
+            $this->view('users/login', $data);
+        }else{
+
+        }
+        
     }
   }
