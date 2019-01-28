@@ -1,8 +1,15 @@
 <?php
   class Posts extends Controller {
+    
+    public function __construct(){
+        if(!isLoggedIn()){
+            redirect('users/login', $data);    
+        }
+    }
+    
     public function index(){
-      $data = [];
+        $data = [];
 
-      $this->view('posts/index', $data);
+        $this->view('posts/index', $data);
     }
   }
