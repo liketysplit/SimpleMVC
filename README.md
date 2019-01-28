@@ -1,1 +1,1 @@
-# SimpleMVC
+# Simple

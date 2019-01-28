@@ -2,9 +2,12 @@
   // App Root
   define('APPROOT', dirname(dirname(__FILE__)));
   // URL Root
-  define('URLROOT', 'http://localhost/simpleMVC');
+  define('URLROOT', 'http://localhost/simple');
   // Site Name
-  define('SITENAME', 'SimpleMVC');
+  define('SITENAME', 'Simple');
+
+  // Version
+  define('VERSION', '1.0.2');
 
   // DB Params
   define('DB_HOST', 'localhost');
