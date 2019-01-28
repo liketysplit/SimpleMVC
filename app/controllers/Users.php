@@ -108,19 +108,54 @@
 
             if(empty($data['email'])){
                 $data['error_email'] = 'Please enter your email';
+            }else{
+                if(!$this->userModel->findUserByEmail($data['email'])){
+                    $data['error_email'] = 'User does not exist or password is incorrect';
+                    $data['error_password1'] = 'User does not exist or password is incorrect';
+                }
             }
             if(empty($data['password1'])){
                 $data['error_password1'] = 'Please enter a password';
-            }else{
-
             }
 
             if(!empty($data['error_email']) || !empty($data['error_password1'])){
                 $this->view('users/login', $data);
             }else{
-                die('TEMP');            
+
+                $loggedInUser = $this->userModel->login($data['email'], $data['password']);
+  
+                if($loggedInUser){
+                    $this->createUserSession($loggedInUser);
+                } else {
+                    $data['error_email'] = 'User does not exist or password is incorrect';
+                    $data['error_password1'] = 'User does not exist or password is incorrect';
+
+                    $this->view('users/login', $data);
+                }
+                
+                       
             }
         }
-        
+          
     }
+
+    public function createUserSession($user){
+        
+        $_SESSION['user_id'] = $user->id;
+        $_SESSION['user_email'] = $user->email;
+        $_SESSION['user_name'] = $user->name;
+        redirect('pages/index');
+      }
+  
+      public function logout(){
+        unset($_SESSION['user_id']);
+        unset($_SESSION['user_email']);
+        unset($_SESSION['user_name']);
+        session_destroy();
+        redirect('users/login');
+      }
+  
+      public function isLoggedIn(){
+        return isset($_SESSION['user_id']);
+      }
   }
