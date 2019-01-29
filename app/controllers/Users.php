@@ -64,7 +64,7 @@
                     flash('register_success','Registration Successful!');
                     redirect('users/login');
                   } else {
-                    die('Registration Failed: Please contact the site administrator.');
+                    die('Registration Failed: Please contact the Site Administrator.');
                   }
             }
 
