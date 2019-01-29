@@ -4,11 +4,13 @@
     <div class="col-md-6">
       <h1>Posts</h1>
     </div>
+    <?php if(isset($_SESSION['user_id'])): ?>
     <div class="col-md-6">
       <a href="<?php echo URLROOT; ?>/posts/add" class="btn btn-primary pull-right">
         <i class="fa fa-pencil"></i> Add Post
       </a>
     </div>
+    <?php endif; ?>
   </div>
   <?php foreach($data['posts'] as $post) : ?>
     <div class="card card-body mb-3">

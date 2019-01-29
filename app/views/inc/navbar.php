@@ -10,9 +10,15 @@
           <li class="nav-item">
             <a class="nav-link" href="<?php echo URLROOT; ?>">Home</a>
           </li>
+          <?php if(isset($_SESSION['user_id']) || PRIVACY): ?>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo URLROOT; ?>/posts">Posts</a>
+          </li>
+          <?php endif; ?>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo URLROOT; ?>/pages/about">About</a>
           </li>
+
         </ul>
         
         <ul class="navbar-nav ml-auto">
